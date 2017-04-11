@@ -1,23 +1,21 @@
 ﻿using NewRelic.Platform.Sdk;
+using NLog;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NLog;
 
 namespace MSMQNewRelicPlugin
 {
     class MSMQAgent : Agent
     {
         Logger logger = LogManager.GetCurrentClassLogger();
-        public override string Guid { get { return "com.truemark.plugin.msmq"; } }
+        public override string Guid { get { return "com.truemark.newrelic.msmq"; } }
 
         public override string Version { get { return "1.0.0"; } }
 
         private String host, domain, username, password, agentName;
 
-        public MSMQAgent(String agentName, String host, String domain, String username, String password) {
+        public MSMQAgent(String agentName, String host, String domain, String username, String password)
+        {
             this.agentName = agentName;
             this.host = host;
             this.domain = domain;
@@ -50,9 +48,7 @@ namespace MSMQNewRelicPlugin
                 ReportMetric("ALL/" + MSMQServiceMeteric.totalBytesInAllQueuesLabel, "bytes", Int64.Parse(serviceMetric.TotalBytesInAllQueues.ToString()));
                 ReportMetric("ALL/" + MSMQServiceMeteric.totalMessagesInAllqueuesLabel, "messages", Int64.Parse(serviceMetric.TotalMessagesInAllQueues.ToString()));
 
-
-
-                logger.Debug(MSMQServiceMeteric.incomingMessagesPerSecLabel + "Messages /Second "+ int.Parse(serviceMetric.IncomingMessagesPerSec.ToString()));
+                logger.Debug(MSMQServiceMeteric.incomingMessagesPerSecLabel + "Messages /Second " + int.Parse(serviceMetric.IncomingMessagesPerSec.ToString()));
                 logger.Debug(MSMQServiceMeteric.incomingMultiCastSessionsLabel + "Session " + int.Parse(serviceMetric.IncomingMultiCastSessions.ToString()));
                 logger.Debug(MSMQServiceMeteric.ipSessionsLabel + "Session " + int.Parse(serviceMetric.IpSessions.ToString()));
                 logger.Debug(MSMQServiceMeteric.incomingMessagesCountLabel + "Message " + int.Parse(serviceMetric.IncomingMessagesCount.ToString()));
@@ -63,7 +59,6 @@ namespace MSMQNewRelicPlugin
                 logger.Debug(MSMQServiceMeteric.sessionsLabel + "Session " + int.Parse(serviceMetric.Sessions.ToString()));
                 logger.Debug(MSMQServiceMeteric.totalBytesInAllQueuesLabel + "Bytes " + int.Parse(serviceMetric.TotalBytesInAllQueues.ToString()));
                 logger.Debug(MSMQServiceMeteric.totalMessagesInAllqueuesLabel + "Message " + int.Parse(serviceMetric.TotalMessagesInAllQueues.ToString()));
-
 
                 foreach (MSMQMeteric m in msmqMetric)
                 {
@@ -76,12 +71,13 @@ namespace MSMQNewRelicPlugin
                     logger.Debug(MSMQMeteric.bytesInQueueLabel + "Bytes  " + int.Parse(m.BytesInQueue.ToString()));
                     logger.Debug(MSMQMeteric.messagesInJournalQueueLabel + "Messages " + int.Parse(m.MessagesInJournalQueue.ToString()));
                     logger.Debug(MSMQMeteric.messagesInQueueLabel + "Messages  " + int.Parse(m.MessagesInQueue.ToString()));
-                   
+
                 }
-            }  catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 logger.Error("----------------------------------------------------------" + e);
             }
-        
-            }
+        }
     }
 }

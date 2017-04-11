@@ -25,9 +25,9 @@ namespace MSMQNewRelicPlugin
             catch (Exception e)
             {
                 Console.WriteLine("Exception occurred, unable to continue.\n", e.Message);
-             
+
             }
-        
+
         }
     }
 }

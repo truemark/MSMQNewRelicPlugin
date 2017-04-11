@@ -12,13 +12,15 @@ namespace MSMQNewRelicPlugin
     class MSMQConnectionUtil
     {
 
-        public static MSMQConnectSession connect(String host, String domain, String username, String password) {
+        public static MSMQConnectSession connect(String host, String domain, String username, String password)
+        {
             SecureString securepassword = new SecureString();
-            foreach (Char p in password.ToCharArray()) {
+            foreach (Char p in password.ToCharArray())
+            {
                 securepassword.AppendChar(p);
             }
-           
-           
+
+
             CimCredential Credentials = new CimCredential(PasswordAuthenticationMechanism.Kerberos
                  + "", domain, username, securepassword);
 
@@ -27,6 +29,6 @@ namespace MSMQNewRelicPlugin
 
             return new MSMQConnectSession(CimSession.Create(host, SessionOptions));
         }
-        
+
     }
 }

@@ -1,3 +1,5 @@
 {
-  "license_key": "Your New Relic license key"
+  "license_key": "Your New Relic license key",
+  "log_file_name": "msmq_newrelic_plugin.log",
+  "log_level":  "debug"
 }
