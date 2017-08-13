@@ -48,17 +48,17 @@ namespace MSMQNewRelicPlugin
                 ReportMetric("ALL/" + MSMQServiceMeteric.totalBytesInAllQueuesLabel, "bytes", Int64.Parse(serviceMetric.TotalBytesInAllQueues.ToString()));
                 ReportMetric("ALL/" + MSMQServiceMeteric.totalMessagesInAllqueuesLabel, "messages", Int64.Parse(serviceMetric.TotalMessagesInAllQueues.ToString()));
 
-                logger.Debug(MSMQServiceMeteric.incomingMessagesPerSecLabel + "Messages /Second " + int.Parse(serviceMetric.IncomingMessagesPerSec.ToString()));
-                logger.Debug(MSMQServiceMeteric.incomingMultiCastSessionsLabel + "Session " + int.Parse(serviceMetric.IncomingMultiCastSessions.ToString()));
-                logger.Debug(MSMQServiceMeteric.ipSessionsLabel + "Session " + int.Parse(serviceMetric.IpSessions.ToString()));
-                logger.Debug(MSMQServiceMeteric.incomingMessagesCountLabel + "Message " + int.Parse(serviceMetric.IncomingMessagesCount.ToString()));
-                logger.Debug(MSMQServiceMeteric.outgoingMessagesCountLabel + "Message " + int.Parse(serviceMetric.OutgoingMessagesCount.ToString()));
-                logger.Debug(MSMQServiceMeteric.outgoingHttpSessionsLabel + "Session " + int.Parse(serviceMetric.OutgoingHttpSessions.ToString()));
-                logger.Debug(MSMQServiceMeteric.outgoingMessagesPerSecLabel + "Messages/Second " + int.Parse(serviceMetric.OutgoingMessagesPerSec.ToString()));
-                logger.Debug(MSMQServiceMeteric.outgoingMulticastSessionsLabel + "Session " + int.Parse(serviceMetric.OutgoingMulticastSessions.ToString()));
-                logger.Debug(MSMQServiceMeteric.sessionsLabel + "Session " + int.Parse(serviceMetric.Sessions.ToString()));
-                logger.Debug(MSMQServiceMeteric.totalBytesInAllQueuesLabel + "Bytes " + int.Parse(serviceMetric.TotalBytesInAllQueues.ToString()));
-                logger.Debug(MSMQServiceMeteric.totalMessagesInAllqueuesLabel + "Message " + int.Parse(serviceMetric.TotalMessagesInAllQueues.ToString()));
+                logger.Debug(MSMQServiceMeteric.incomingMessagesPerSecLabel + "Messages /Second " + Int64.Parse(serviceMetric.IncomingMessagesPerSec.ToString()));
+                logger.Debug(MSMQServiceMeteric.incomingMultiCastSessionsLabel + "Session " + Int64.Parse(serviceMetric.IncomingMultiCastSessions.ToString()));
+                logger.Debug(MSMQServiceMeteric.ipSessionsLabel + "Session " + Int64.Parse(serviceMetric.IpSessions.ToString()));
+                logger.Debug(MSMQServiceMeteric.incomingMessagesCountLabel + "Message " + Int64.Parse(serviceMetric.IncomingMessagesCount.ToString()));
+                logger.Debug(MSMQServiceMeteric.outgoingMessagesCountLabel + "Message " + Int64.Parse(serviceMetric.OutgoingMessagesCount.ToString()));
+                logger.Debug(MSMQServiceMeteric.outgoingHttpSessionsLabel + "Session " + Int64.Parse(serviceMetric.OutgoingHttpSessions.ToString()));
+                logger.Debug(MSMQServiceMeteric.outgoingMessagesPerSecLabel + "Messages/Second " + Int64.Parse(serviceMetric.OutgoingMessagesPerSec.ToString()));
+                logger.Debug(MSMQServiceMeteric.outgoingMulticastSessionsLabel + "Session " + Int64.Parse(serviceMetric.OutgoingMulticastSessions.ToString()));
+                logger.Debug(MSMQServiceMeteric.sessionsLabel + "Session " + Int64.Parse(serviceMetric.Sessions.ToString()));
+                logger.Debug(MSMQServiceMeteric.totalBytesInAllQueuesLabel + "Bytes " + Int64.Parse(serviceMetric.TotalBytesInAllQueues.ToString()));
+                logger.Debug(MSMQServiceMeteric.totalMessagesInAllqueuesLabel + "Message " + Int64.Parse(serviceMetric.TotalMessagesInAllQueues.ToString()));
 
                 foreach (MSMQMeteric m in msmqMetric)
                 {
@@ -67,16 +67,16 @@ namespace MSMQNewRelicPlugin
                     ReportMetric(m.Name + "/" + MSMQMeteric.bytesInQueueLabel, "bytes", Int64.Parse(m.BytesInQueue.ToString()));
                     ReportMetric(m.Name + "/" + MSMQMeteric.messagesInJournalQueueLabel, "messages", Int64.Parse(m.MessagesInJournalQueue.ToString()));
                     ReportMetric(m.Name + "/" + MSMQMeteric.messagesInQueueLabel, "messages", Int64.Parse(m.MessagesInQueue.ToString()));
-                    logger.Debug(MSMQMeteric.bytesInJournalQueueLabel + "Bytes  " + int.Parse(m.BytesInJournalQueue.ToString()));
-                    logger.Debug(MSMQMeteric.bytesInQueueLabel + "Bytes  " + int.Parse(m.BytesInQueue.ToString()));
-                    logger.Debug(MSMQMeteric.messagesInJournalQueueLabel + "Messages " + int.Parse(m.MessagesInJournalQueue.ToString()));
-                    logger.Debug(MSMQMeteric.messagesInQueueLabel + "Messages  " + int.Parse(m.MessagesInQueue.ToString()));
+                    logger.Debug(MSMQMeteric.bytesInJournalQueueLabel + "Bytes  " + Int64.Parse(m.BytesInJournalQueue.ToString()));
+                    logger.Debug(MSMQMeteric.bytesInQueueLabel + "Bytes  " + Int64.Parse(m.BytesInQueue.ToString()));
+                    logger.Debug(MSMQMeteric.messagesInJournalQueueLabel + "Messages " + Int64.Parse(m.MessagesInJournalQueue.ToString()));
+                    logger.Debug(MSMQMeteric.messagesInQueueLabel + "Messages  " + Int64.Parse(m.MessagesInQueue.ToString()));
 
                 }
             }
             catch (Exception e)
             {
-                logger.Error("----------------------------------------------------------" + e);
+                logger.Error("Unable to get count for queue: "+ this.agentName + " " + e);
             }
         }
     }

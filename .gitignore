@@ -290,3 +290,5 @@ MSMQNewRelicPlugin/config/newrelic.json
 MSMQNewRelicPlugin/config/plugin.json
 newrelic-msmq-plugin
 newrelic-msmq-plugin/**
+/.localhistory/MSMQNewRelicPlugin
+/.localhistory/c/users/dsisodia/documents/visual studio 2015/projects/msmqnewrelicplugin/msmqnewrelicplugin/config
